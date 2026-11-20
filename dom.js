@@ -83,14 +83,22 @@ szamitGomb.addEventListener('click', () => {
 	const negyzetek = negyzetreEmel(aktualisTomb);
 	const negyzetekOsszege = kiszamitOsszeg(negyzetek);
 
-	eredmenyDiv.innerHTML = `
-		<p><strong>Minimum:</strong> ${min}</p>
-		<p><strong>Maximum:</strong> ${max}</p>
-		<p><strong>Átlag:</strong> ${atlag.toFixed(2)}</p>
-		<p><strong>Összeg:</strong> ${osszeg}</p>
-		<p><strong>Négyzetre emelt elemek:</strong> [${negyzetek.join(', ')}]</p>
-		<p><strong>Négyzetek összege:</strong> ${negyzetekOsszege}</p>
-	`;
+	eredmenyDiv.textContent = '';
+
+	function eredmenyKiir(feliratSzoveg, ertek) {
+		const sor = document.createElement('p');
+		const felirat = document.createElement('strong');
+		felirat.textContent = feliratSzoveg + ': ';
+		sor.append(felirat, document.createTextNode(ertek));
+		eredmenyDiv.append(sor);
+	}
+
+	eredmenyKiir('Minimum', min);
+	eredmenyKiir('Maximum', max);
+	eredmenyKiir('Átlag', atlag.toFixed(2));
+	eredmenyKiir('Összeg', osszeg);
+	eredmenyKiir('Négyzetre emelt elemek', `[${negyzetek.join(', ')}]`);
+	eredmenyKiir('Négyzetek összege', negyzetekOsszege);
 
 	const datum = new Date();
 	console.log(`[${datum.toLocaleString('hu-HU')}] Generált tömb: [${aktualisTomb.join(', ')}]`);
