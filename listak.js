@@ -31,3 +31,34 @@ function kiszamitMax(tomb) {
 	}
 	return max;
 }
+
+// átlagkiszámítás
+
+function kiszamitAtlag(tomb) {
+	if (tomb.length === 0) return null;
+	let osszeg = 0;
+	for (let i = 0; i < tomb.length; i++) {
+		osszeg += tomb[i];
+	}
+	return osszeg / tomb.length;
+}
+
+// összegzés
+
+function kiszamitOsszeg(tomb) {
+	let osszeg = 0;
+	for (let i = 0; i < tomb.length; i++) {
+		osszeg += tomb[i];
+	}
+	return osszeg;
+}
+
+// minden elem négyzetre emelése
+
+function negyzetreEmel(tomb) {
+	const negyzetek = [];
+	for (let i = 0; i < tomb.length; i++) {
+		negyzetek.push(tomb[i] * tomb[i]);
+	}
+	return negyzetek;
+}
